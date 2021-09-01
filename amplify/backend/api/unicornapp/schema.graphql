@@ -1,0 +1,49 @@
+type Content @model {
+    id: ID!
+    name: String!
+    description: String
+    s3img: String
+    usedService:[String]
+    categorty: [String]
+    contentType:[String]
+    comments:[Comment] @connection(keyName: "byContent", fields:["id"])
+    like:[Like] @connection(keyName: "byLike", fields:["id"])
+    likecount:String
+    owner:String
+    status:ContentStatus!
+    link:[String]
+    photos: [Photo] @connection(name: "ContentPhotos")
+}
+
+enum ContentStatus{
+    done
+    wait
+}
+
+type Comment @model @key(name: "byContent", fields:["contentID","feedback"]){
+    id: ID!
+    contentID: ID!
+    feedback: String!
+    owner:String
+}
+
+type Like @model @key(name: "byLike", fields:["contentID"]){
+    id: ID!
+    contentID: ID!
+    owner:String
+}
+
+
+type Photo @model {
+    id: ID!
+    album: Content @connection(name: "ContentPhotos")
+    bucket: String!
+    fullsize: PhotoS3Info!
+    thumbnail: PhotoS3Info!
+}
+
+type PhotoS3Info {
+    key: String!
+    width: Int!
+    height: Int!
+}
