@@ -1,19 +1,19 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-unicornapp-dev-183730-authRole",
-      "UnauthRoleArn": "arn:aws:iam::566034038752:role/amplify-unicornapp-dev-183730-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::566034038752:role/amplify-unicornapp-dev-183730-authRole",
+      "AuthRoleName": "amplify-krunicorn2020-dev-222805-authRole",
+      "UnauthRoleArn": "arn:aws:iam::960428506382:role/amplify-krunicorn2020-dev-222805-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::960428506382:role/amplify-krunicorn2020-dev-222805-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-unicornapp-dev-183730-deployment",
-      "UnauthRoleName": "amplify-unicornapp-dev-183730-unauthRole",
-      "StackName": "amplify-unicornapp-dev-183730",
-      "StackId": "arn:aws:cloudformation:us-west-2:566034038752:stack/amplify-unicornapp-dev-183730/e885f700-0975-11ec-bcef-0ac403330061",
-      "AmplifyAppId": "d3v8gvet9ndfgr"
+      "DeploymentBucketName": "amplify-krunicorn2020-dev-222805-deployment",
+      "UnauthRoleName": "amplify-krunicorn2020-dev-222805-unauthRole",
+      "StackName": "amplify-krunicorn2020-dev-222805",
+      "StackId": "arn:aws:cloudformation:us-west-2:960428506382:stack/amplify-krunicorn2020-dev-222805/732e3c10-0b28-11ec-ac33-0262b0cd9a17",
+      "AmplifyAppId": "d1ytg4aee8gb7o"
     },
     "categories": {
       "auth": {
-        "unicornappe537158b": {}
+        "krunicorn2020ed59bdc3": {}
       }
     }
   }

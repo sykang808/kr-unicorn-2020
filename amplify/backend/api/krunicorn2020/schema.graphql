@@ -33,7 +33,6 @@ type Like @model @key(name: "byLike", fields:["contentID"]){
     owner:String
 }
 
-
 type Photo @model {
     id: ID!
     album: Content @connection(name: "ContentPhotos")

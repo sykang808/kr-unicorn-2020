@@ -13,6 +13,17 @@ projects:
         region: us-west-2
         apiId: null
         maxDepth: 2
+  krunicorn2020:
+    schemaPath: src/graphql/schema.json
+    includes:
+      - src/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql
 extensions:
   amplify:
     version: 3

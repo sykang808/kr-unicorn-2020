@@ -1,10 +1,10 @@
 {
-  "AppSyncApiName": "unicornapp",
+  "AppSyncApiName": "krunicorn2020",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
-      "authunicornappe537158b",
+      "authkrunicorn2020ed59bdc3",
       "Outputs.UserPoolId"
     ]
   }

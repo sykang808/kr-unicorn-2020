@@ -1,6 +1,6 @@
 {
   "auth": {
-    "unicornappe537158b": {
+    "krunicorn2020ed59bdc3": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -24,7 +24,7 @@
     }
   },
   "api": {
-    "unicornapp": {
+    "krunicorn2020": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -32,7 +32,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authunicornappe537158b"
+              "userPoolId": "authkrunicorn2020ed59bdc3"
             }
           },
           "additionalAuthenticationProviders": []

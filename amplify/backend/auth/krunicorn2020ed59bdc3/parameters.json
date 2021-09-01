@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "unicornappe537158b_identitypool_e537158b",
+    "identityPoolName": "krunicorn2020ed59bdc3_identitypool_ed59bdc3",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "unicore537158b",
-    "userPoolName": "unicornappe537158b_userpool_e537158b",
+    "resourceNameTruncated": "kruniced59bdc3",
+    "userPoolName": "krunicorn2020ed59bdc3_userpool_ed59bdc3",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -31,10 +31,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "unicore537158b_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "kruniced59bdc3_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "e537158b",
-    "resourceName": "unicornappe537158b",
+    "sharedId": "ed59bdc3",
+    "resourceName": "krunicorn2020ed59bdc3",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
