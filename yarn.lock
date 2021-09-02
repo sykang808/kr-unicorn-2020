@@ -1349,7 +1349,7 @@
   resolved "https://registry.yarnpkg.com/@awsui/collection-hooks/-/collection-hooks-1.0.19.tgz#fd221e11d6d2a7ed7fee9a25a0abd5f6dce74677"
   integrity sha512-hPQVfpUufygSZKg3w7+aqF2RFOhGn1qCN/5IiZ1Pw/p7OHJRvuFnmjRSZcP0Iduspqopp11uBLdWqrgyPpeEOg==
 
-"@awsui/components-react@^3.0.237":
+"@awsui/components-react@^3.0.236":
   version "3.0.237"
   resolved "https://registry.yarnpkg.com/@awsui/components-react/-/components-react-3.0.237.tgz#5ba36e624a653143f8690f1559330c42652d73f4"
   integrity sha512-BPqGT4+8OqKwsiL4vXXtE+gZ45ZoB2vVS7APqfgSnNbE4Xwz6Uxcqm5VAV7PkIz/BJX/KoMq6mgCHUqvB8Wjsw==
@@ -1372,6 +1372,11 @@
     react-virtual "^2.7.1"
     tslib "2.0.3"
     weekstart "^1.1.0"
+
+"@awsui/global-styles@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@awsui/global-styles/-/global-styles-1.0.9.tgz#c8ad24c42f2d5cfca0158173d79d03f36a0841df"
+  integrity sha512-t5rFKUPNE99ex7VRqX4B79jwif+2aLt2SVNeq+bBquzI7wyvYyRpucdsn/+g9k50e6Seyy7BnslMWes8k24IuQ==
 
 "@awsui/test-utils-core@^1.0.0":
   version "1.0.13"
