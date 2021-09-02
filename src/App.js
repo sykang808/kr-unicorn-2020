@@ -10,6 +10,7 @@ import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import { Connect, withAuthenticator } from 'aws-amplify-react';
 import aws_exports from './aws-exports';
 import { Auth } from 'aws-amplify';
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 
 Amplify.configure(aws_exports);
 function makeComparator(key, order='asc') {
@@ -137,8 +138,8 @@ class NewContent extends Component {
         owner
       }
     }`;
-    let user;//await Auth.currentAuthenticatedUser();
-    user.username = test;
+    let user = await Auth.currentAuthenticatedUser();
+//    user.username = test;
     const result = await API.graphql(graphqlOperation(NewContent, { name: this.state.contentName, owner: user.username }));
     console.info(`Created content with id ${result.data.createContent.id}`);
     this.setState({ contentName: '' })
@@ -251,8 +252,8 @@ class NewComment extends Component {
       }
     }
     `;
-    let user;//await Auth.currentAuthenticatedUser();
-    user.username = test;
+    let user=await Auth.currentAuthenticatedUser();
+//    user.username = test;
     const result = await API.graphql(graphqlOperation(NewComment, { feedback: this.state.commentName , contentID: this.props.contents , owner: user.username }));
     console.info(`Created comment with id ${result.data.createComment.id}`);
     this.setState({ commentName: '' })
