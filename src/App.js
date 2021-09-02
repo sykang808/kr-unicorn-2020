@@ -7,10 +7,9 @@ import Home from "./Home";
 import { BrowserRouter as Router, Route, Switch, NavLink} from "react-router-dom";
  
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
-import { Connect, withAuthenticator } from 'aws-amplify-react';
+import { Connect, withAuthenticator, AmplifySignOut} from 'aws-amplify-react';
 import aws_exports from './aws-exports';
 import { Auth } from 'aws-amplify';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 
 Amplify.configure(aws_exports);
 function makeComparator(key, order='asc') {
@@ -301,12 +300,14 @@ function App() {
       }
       content={
         <Router>
+         
           <Route exact path="/" component={ContentsListLoader} />
           <Route exact path="/register" component={NewContent} />
           <Route
             path="/contents/:contentId"
             render={ props => <ContentDetailsLoader id={props.match.params.contentId}/> }
           />
+         
         </Router>
         
       }

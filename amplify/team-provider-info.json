@@ -1,22 +1,4 @@
 {
-  "master": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-krunicorn2020-master-160421-authRole",
-      "UnauthRoleArn": "arn:aws:iam::960428506382:role/amplify-krunicorn2020-master-160421-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::960428506382:role/amplify-krunicorn2020-master-160421-authRole",
-      "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-krunicorn2020-master-160421-deployment",
-      "UnauthRoleName": "amplify-krunicorn2020-master-160421-unauthRole",
-      "StackName": "amplify-krunicorn2020-master-160421",
-      "StackId": "arn:aws:cloudformation:us-west-2:960428506382:stack/amplify-krunicorn2020-master-160421/4516e910-0b3e-11ec-b8db-061525825e95",
-      "AmplifyAppId": "d1ytg4aee8gb7o"
-    },
-    "categories": {
-      "auth": {
-        "krunicorn2020ed59bdc3": {}
-      }
-    }
-  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-krunicorn2020-dev-222805-authRole",
@@ -27,6 +9,24 @@
       "UnauthRoleName": "amplify-krunicorn2020-dev-222805-unauthRole",
       "StackName": "amplify-krunicorn2020-dev-222805",
       "StackId": "arn:aws:cloudformation:us-west-2:960428506382:stack/amplify-krunicorn2020-dev-222805/732e3c10-0b28-11ec-ac33-0262b0cd9a17",
+      "AmplifyAppId": "d1ytg4aee8gb7o"
+    },
+    "categories": {
+      "auth": {
+        "krunicorn2020ed59bdc3": {}
+      }
+    }
+  },
+  "master": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-krunicorn2020-master-161114-authRole",
+      "UnauthRoleArn": "arn:aws:iam::960428506382:role/amplify-krunicorn2020-master-161114-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::960428506382:role/amplify-krunicorn2020-master-161114-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-krunicorn2020-master-161114-deployment",
+      "UnauthRoleName": "amplify-krunicorn2020-master-161114-unauthRole",
+      "StackName": "amplify-krunicorn2020-master-161114",
+      "StackId": "arn:aws:cloudformation:us-west-2:960428506382:stack/amplify-krunicorn2020-master-161114/f8596c90-0bbc-11ec-890e-06e53156f195",
       "AmplifyAppId": "d1ytg4aee8gb7o"
     },
     "categories": {
