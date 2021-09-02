@@ -300,16 +300,13 @@ function App() {
       }
       content={
         <Router>
-         
-          <Route exact path="/" component={ContentsListLoader} />
-          <Route exact path="/register" component={NewContent} />
+          <Route exact path="/" exact component={ContentsListLoader} />
+          <Route exact path="/register" exact component={NewContent} />
           <Route
             path="/contents/:contentId"
             render={ props => <ContentDetailsLoader id={props.match.params.contentId}/> }
-          />
-         
+          />         
         </Router>
-        
       }
     />
   );
