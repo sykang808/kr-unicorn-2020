@@ -137,7 +137,8 @@ class NewContent extends Component {
         owner
       }
     }`;
-    let user = await Auth.currentAuthenticatedUser();
+    let user;//await Auth.currentAuthenticatedUser();
+    user.username = test;
     const result = await API.graphql(graphqlOperation(NewContent, { name: this.state.contentName, owner: user.username }));
     console.info(`Created content with id ${result.data.createContent.id}`);
     this.setState({ contentName: '' })
@@ -250,7 +251,8 @@ class NewComment extends Component {
       }
     }
     `;
-    let user = await Auth.currentAuthenticatedUser();
+    let user;//await Auth.currentAuthenticatedUser();
+    user.username = test;
     const result = await API.graphql(graphqlOperation(NewComment, { feedback: this.state.commentName , contentID: this.props.contents , owner: user.username }));
     console.info(`Created comment with id ${result.data.createComment.id}`);
     this.setState({ commentName: '' })
