@@ -28,9 +28,13 @@ function makeComparator(key, order='asc') {
 
 class ContentsList extends React.Component {
   contentItems() {
-    return this.props.contents.sort(makeComparator('name')).map(content =>
+    return this.props.contents.sort(makeComparator('createdAt')).map(content =>
       <List.Item key={content.id}>
-        <NavLink to={`/contents/${content.id}`}>{content.name}</NavLink>
+          <NavLink to={`/contents/${content.id}`}>{content.name}</NavLink>
+          <tr>
+            <td>{content.owner}  </td>
+            <td>{content.createdAt}</td>
+        </tr>
       </List.Item>
     );
   }
@@ -48,7 +52,7 @@ class ContentsList extends React.Component {
 }
 class CommentsList extends React.Component {
   commentItems() {
-    return this.props.contents.sort(makeComparator('feedback')).map(content =>
+    return this.props.contents.sort(makeComparator('createdAt')).map(content =>
       <List.Item key={content.id}>
         <p>{content.feedback}</p>
       </List.Item>
@@ -71,6 +75,7 @@ const SubscribeToNewContents = `
     onCreateContent {
       id
       name
+      owner
     }
   }
 `;
@@ -79,6 +84,8 @@ const ListContents = `{
     items {
       id
       name
+      createdAt
+      owner
     }
   }
 }`;
