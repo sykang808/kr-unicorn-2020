@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Header, Input, List, Segment } from 'semantic-ui-react';
+import { Grid, Header, Input, List, Segment, Table } from 'semantic-ui-react';
 
 import AppLayout from "@awsui/components-react/app-layout";
 import NavBar from "./NavBar";
@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Switch, NavLink} from "react-router-dom
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import { Connect, withAuthenticator } from 'aws-amplify-react';
 import aws_exports from './aws-exports';
+import { Auth } from 'aws-amplify';
 
 Amplify.configure(aws_exports);
 function makeComparator(key, order='asc') {
@@ -31,10 +32,8 @@ class ContentsList extends React.Component {
     return this.props.contents.sort(makeComparator('createdAt')).map(content =>
       <List.Item key={content.id}>
           <NavLink to={`/contents/${content.id}`}>{content.name}</NavLink>
-          <tr>
-            <td>{content.owner}  </td>
-            <td>{content.createdAt}</td>
-        </tr>
+            <td>owner : {content.owner}</td> 
+            <tr>time : {content.createdAt} </tr>
       </List.Item>
     );
   }
@@ -54,7 +53,7 @@ class CommentsList extends React.Component {
   commentItems() {
     return this.props.contents.sort(makeComparator('createdAt')).map(content =>
       <List.Item key={content.id}>
-        <p>{content.feedback}</p>
+        <p>{content.owner} : {content.feedback} {content.createdAt}</p>
       </List.Item>
     );
   }
@@ -131,14 +130,15 @@ class NewContent extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    const NewContent = `mutation NewContent($name: String!) {
-      createContent(input: {name: $name , status: wait}) {
+    const NewContent = `mutation NewContent($name: String! $owner: String!) {
+      createContent(input: {name: $name ,owner: $owner ,status: wait}) {
         id
         status
+        owner
       }
     }`;
-
-    const result = await API.graphql(graphqlOperation(NewContent, { name: this.state.contentName }));
+    let user = await Auth.currentAuthenticatedUser();
+    const result = await API.graphql(graphqlOperation(NewContent, { name: this.state.contentName, owner: user.username }));
     console.info(`Created content with id ${result.data.createContent.id}`);
     this.setState({ contentName: '' })
     window.location.href=`/`
@@ -208,6 +208,7 @@ const ListComments = `query ListComments($eq: ID!) {
       id
       createdAt
       feedback
+      owner
     }
   }
 }
@@ -241,16 +242,16 @@ class NewComment extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    const NewComment = `mutation NewComment($feedback: String!, $contentID: ID!) {
-      createComment(input: {contentID: $contentID, feedback: $feedback}) {
+    const NewComment = `mutation NewComment($feedback: String!, $contentID: ID!, $owner: String!) {
+      createComment(input: {contentID: $contentID, feedback: $feedback, owner: $owner}) {
         contentID
         feedback
         id
       }
     }
     `;
-
-    const result = await API.graphql(graphqlOperation(NewComment, { feedback: this.state.commentName , contentID: this.props.contents }));
+    let user = await Auth.currentAuthenticatedUser();
+    const result = await API.graphql(graphqlOperation(NewComment, { feedback: this.state.commentName , contentID: this.props.contents , owner: user.username }));
     console.info(`Created comment with id ${result.data.createComment.id}`);
     this.setState({ commentName: '' })
     window.location.href=`/contents/` + this.props.contents;
