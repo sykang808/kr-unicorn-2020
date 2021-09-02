@@ -156,6 +156,131 @@ class NewContent extends Component {
     }
 }
 
+const GetContent = `query GetContent($id: ID!) {
+  getContent(id: $id) {
+    contentType
+    createdAt
+    description
+    id
+    link
+    name
+    owner
+    s3img
+    status
+    updatedAt
+    usedService
+    categorty
+  }
+}
+`;
+class ContentDetails extends Component {
+  
+  render() {
+    return (
+      <Segment>
+        <h3 class="ui header">{this.props.content.name}</h3>
+        
+        <Segment>
+          <p>CREAT AT: {this.props.content.createdAt}</p>
+          <p>ID : {this.props.content.id}</p>
+          <p>OWNER: {this.props.content.owner}</p>
+          <p>STATUD: {this.props.content.status}</p>
+          <p>UPDATE AT{this.props.content.updatedAt}</p>
+        </Segment>
+        <CommentListLoader contents={this.props.content.id}/>
+        <NewComment contents={this.props.content.id}/>
+      </Segment>
+        
+    )
+  }
+}
+const ListComments = `query ListComments($eq: ID!) {
+  listComments(filter: {contentID: {eq: $eq}}) {
+    items {
+      contentID
+      id
+      createdAt
+      feedback
+    }
+  }
+}
+`;
+class ContentDetailsLoader extends React.Component {
+  render() {
+    return (
+      <Connect query={graphqlOperation(GetContent, { id: this.props.id })}>
+        {({ data, loading }) => {
+          if (loading) { return <div>Loading...</div>; }
+          if (!data) { return  <div>ID : {this.props.id} Data null...</div>; } 
+          if (!data.getContent) return;
+
+          return <ContentDetails content={data.getContent} />;
+        }}
+      </Connect>
+    );
+  }
+}
+
+class NewComment extends Component {
+  constructor(props) {
+    super(props);  
+  }
+
+  handleChange = (event) => {
+    let change = {};
+    change[event.target.name] = event.target.value;
+    this.setState(change);
+  }
+
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    const NewComment = `mutation NewComment($feedback: String!, $contentID: ID!) {
+      createComment(input: {contentID: $contentID, feedback: $feedback}) {
+        contentID
+        feedback
+        id
+      }
+    }
+    `;
+
+    const result = await API.graphql(graphqlOperation(NewComment, { feedback: this.state.commentName , contentID: this.props.contents }));
+    console.info(`Created comment with id ${result.data.createComment.id}`);
+    this.setState({ commentName: '' })
+    window.location.href=`/contents/` + this.props.contents;
+  }
+
+  render() {
+    return (
+        <Input
+        type='text'
+        placeholder='New Comment'
+        icon='plus'
+        iconPosition='left'
+        action={{ content: 'Add', onClick: this.handleSubmit }}
+        name='commentName'
+        value={this.props.content}
+        onChange={this.handleChange}
+        />
+      
+      )
+    }
+}
+class CommentListLoader extends React.Component {
+  
+  render() {
+      return (
+          <Connect query={graphqlOperation( ListComments, { eq: this.props.contents })} >
+              {({ data, loading }) => {
+                  if (loading) { return <div>Loading...</div>; }
+                  if (!data) return;
+                  if (!data.listComments) return;
+              return <CommentsList contents={data.listComments.items} />;
+              }}
+          </Connect>
+          
+      );
+  }
+}
 
 function App() {
   return (
@@ -167,7 +292,12 @@ function App() {
         <Router>
           <Route exact path="/" component={ContentsListLoader} />
           <Route exact path="/register" component={NewContent} />
+          <Route
+            path="/contents/:contentId"
+            render={ props => <ContentDetailsLoader id={props.match.params.contentId}/> }
+          />
         </Router>
+        
       }
     />
   );
