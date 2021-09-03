@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import Amplify from 'aws-amplify';
 import config from './aws-exports';
 import { BrowserRouter as Router, Route, Switch, NavLink} from "react-router-dom";
- 
+import { Grid,  List, Segment, Table } from 'semantic-ui-react';
+import AppLayout from "@awsui/components-react/app-layout";
 Amplify.configure(config);
 
 ReactDOM.render(
