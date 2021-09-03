@@ -26,11 +26,7 @@ const NavBar = () => {
                     text:"Create",
                     href:"/register"
                   },
-                  {
-                    type:'link',
-                    text:"Create Contents",
-                    href:"/registerx"
-                  },
+                  
                 ]
 
               }
